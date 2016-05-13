@@ -1,2 +1,2 @@
 #!/bin/bash
-mkdir img json secrets
+mkdir ../{img, json, secrets}

@@ -23,10 +23,6 @@ json_data = open(filename) do |io|
 end
 
 json_data['items'].each do |item|
-    # if item['pagemap']['cse_image']
-    #     p url = item['pagemap']['cse_image'][0]['src']
-    #     save_image(url)
-    # end
     if url = item['link']
         p url
         save_image(url, dirname)

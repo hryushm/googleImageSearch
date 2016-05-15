@@ -3,7 +3,7 @@ require 'addressable'
 require 'json'
 
 word = ARGV[0]
-filename = '../json/' + word + '.json'
+filename = File.dirname(__FILE__) + '/../json/' + word + '.json'
 uri = "https://www.googleapis.com/customsearch/v1?"
 uri += "key=#{ENV['API_KEY']}"
 uri += "&cx=#{ENV['SEARCH_ENGINE_ID']}"

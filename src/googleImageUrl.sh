@@ -6,8 +6,4 @@ if [ ! -f ${JSON_FILE} ]; then
     export SEARCH_ENGINE_ID=`cat ${script_dir}/../secrets/id`
     ruby ${script_dir}/getJson.rb $1
 fi
-IMG_DIR="${script_dir}/../img/$1"
-if [ ! -d ${IMG_DIR} ]; then
-    mkdir $IMG_DIR
-fi
 ruby ${script_dir}/getOneImg.rb ${JSON_FILE}

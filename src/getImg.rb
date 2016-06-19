@@ -5,13 +5,20 @@ filename = ARGV[0]
 dirname = ARGV[1]
 
 def save_image(url, dirName)
-  fileName = File.basename(url)
-  filePath = dirName + fileName
-  open(filePath, 'wb') do |output|
-    open(url) do |data|
-      output.write(data.read)
+    fileName = File.basename(url)
+    if fileName =~ /\.(png|jpg|jpeg)$/
+        filePath = dirName + fileName
+        puts 'Downloading : ' + url
+        open(filePath, 'wb') do |output|
+            begin
+                open(url) do |data|
+                    output.write(data.read)
+                end
+            rescue OpenURI::HTTPError => e
+                p e
+            end
+        end
     end
-  end
 end
 
 json_data = open(filename) do |io|
@@ -20,7 +27,6 @@ end
 
 json_data['items'].each do |item|
     if url = item['link']
-        puts 'Downloading : ' + url
         save_image(url, dirname)
     end
 end
